@@ -25,7 +25,7 @@ app.get('/',function(req,res){
     res.send("sslforfree.com 의 3개월짜리 무료ssl의 Manually Verify Domain을 위한 temp서버");
 });
 
-app.get('/.well-known/acme-challenge/R16k5yqQyQRvg1FX4VwA9Z-UNIs3eaW1K5YFgoW59_c',function(req,res){
+app.get('/.well-known/acme-challenge/yyiW3EiS7CdkBewDQwtk_-IYfu_YoBf-97_2cwaLSlY',function(req,res){
   var origFileNm; //기입할 필요 없음
   fs.readdir('./temp', function(error, filelist){
     console.log(filelist);
