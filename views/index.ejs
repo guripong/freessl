@@ -6,6 +6,28 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>sslforfree.com 의 3개월짜리 무료ssl의 Manually Verify Domain을 위한 temp서버</p>
+    <script>
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+        }
+        window.onload = function () {
+          var zcount=0;
+          var nzcount=0;
+          for(var i = 0 ; i<10000; i++){
+          var a=getRandomInt(0,2);
+            if(a==0) zcount++;
+            else nzcount++;
+          }
+          console.log(nzcount);
+          console.log(zcount);
+
+        }
+
+
+
+    </script>
   </body>
 </html>

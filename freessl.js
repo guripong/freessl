@@ -22,7 +22,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/',function(req,res){
-    res.send("sslforfree.com 의 3개월짜리 무료ssl의 Manually Verify Domain을 위한 temp서버");
+//    res.send("sslforfree.com 의 3개월짜리 무료ssl의 Manually Verify Domain을 위한 temp서버");
+    
+
+      res.render('index', { title: 'sslforfree.com 사용법' });
+
+    
 });
 
 app.get('/.well-known/acme-challenge/yyiW3EiS7CdkBewDQwtk_-IYfu_YoBf-97_2cwaLSlY',function(req,res){
@@ -62,7 +67,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-const port = 5000;
+const port = 4444;
 const myip = "0.0.0.0";
 
 app.listen(port, myip, function () {
