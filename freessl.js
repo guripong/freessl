@@ -23,28 +23,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/',function(req,res){
 //    res.send("sslforfree.com 의 3개월짜리 무료ssl의 Manually Verify Domain을 위한 temp서버");
-    
-
       res.render('index', { title: 'sslforfree.com 사용법' });
-
-    
 });
 
-app.get('/.well-known/acme-challenge/yyiW3EiS7CdkBewDQwtk_-IYfu_YoBf-97_2cwaLSlY',function(req,res){
-  var origFileNm; //기입할 필요 없음
-  fs.readdir('./temp', function(error, filelist){
-    console.log(filelist);
-    origFileNm=filelist[0];
-  var file='./temp/'+origFileNm; //여기가 로칼에서 받을 파일내임
-  mimetype = mime.getType(origFileNm);// look to getType
-  res.setHeader('Content-disposition','attachment;filename='+origFileNm); //여기가 서버에서 보낼 파일이름해더에 정해주기
-  res.setHeader('Content-type',mimetype);
-  var filestream=fs.createReadStream(file);//실제파일
-  filestream.pipe(res);
-  })
 
 
+app.get('/.well-known/acme-challenge/:filename',function(req,res){
+  //var host = req.get('host');
+  //HuK9nX2InbqShoM1tUbZ68REkAi61PhVVwveqCy9YjM
+  console.log(req.params.filename);
+  var origFileNm = req.params.filename; //기입할 필요 없음
+
+    var file='./temp/'+origFileNm; //여기가 로칼에서 받을 파일내임
+    mimetype = mime.getType(origFileNm);// look to getType
+    res.setHeader('Content-disposition','attachment;filename='+origFileNm); //여기가 서버에서 보낼 파일이름해더에 정해주기
+    res.setHeader('Content-type',mimetype);
+    var filestream=fs.createReadStream(file);//실제파일
+    filestream.pipe(res);
 });
+
 
 //app.use('/', indexRouter);
 //app.use('/users', usersRouter);
